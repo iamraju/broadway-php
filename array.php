@@ -1,5 +1,28 @@
 <?php
 echo "<pre>";
+$menus = [
+	[
+		'name' => 'Home',
+		'link' => './'
+	],
+	[
+		'name' => 'Destination',
+		'link' => './destination.php'
+	],
+	[
+		'name' => 'Pricing',
+		'link' => './pricing.php'
+	],
+	[
+		'name' => 'Contact',
+		'link' => './contact.php'
+	]
+];
+foreach($menus as $menu) {
+	echo $menu['name'] . " = " . $menu['link'] . "<br>";
+}
+// print_r($menus);
+die;
 // Associative arrays
 $student = [
 	'name' 		=> "Ram Sharma",
