@@ -1,6 +1,3 @@
-<?php
-include "config.php";
-?>
 <!DOCTYPE HTML>
 <!--
 	Traveler by freehtml5.co
@@ -61,14 +58,12 @@ include "config.php";
 
 	</head>
 	<body>
-		
-	<div class="gtco-loader"></div>
-	
+
 	<div id="page">
 
 	
 	<!-- <div class="page-inner"> -->
-	<?php require "partials/top-menu.php"; ?>
+	<?php include "includes/menu.php"; ?>
 	
 	<header id="gtco-header" class="gtco-cover gtco-cover-sm" role="banner" style="background-image: url(images/img_2.jpg)">
 		<div class="overlay"></div>

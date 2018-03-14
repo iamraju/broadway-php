@@ -1,13 +1,42 @@
 <?php
 echo "<pre>";
+$destinations = [
+	'Philipines',
+	'India',
+	'Indonesia',
+	'Malaysia',
+	'Nepal',
+	'Bhutan',
+	'Maldivs',
+	'Pakistan',
+	'USA'
+];
+$destinations1 = [
+	'Canada',
+	'UK',
+	'France'
+];
+$arr1 = ['k1' => 'key1', 'k2' => 'key2'];
+$arr2 = ['val1', 'val2'];
+print_r(array_combine($arr1, $arr2));
+
+die;
 $menus = [
-	[
-		'name' => 'Home',
-		'link' => './'
-	],
-	[
-		'name' => 'Destination',
-		'link' => './destination.php'
+	'something',
+	
+	'submenus' => [
+		[
+			'name' => 'Destination',
+			'link' => './destination.php',
+		],
+		[
+			'name' => 'Destination',
+			'link' => './destination.php',
+		],
+		[
+			'name' => 'Destination',
+			'link' => './destination.php',
+		]
 	],
 	[
 		'name' => 'Pricing',
@@ -18,8 +47,18 @@ $menus = [
 		'link' => './contact.php'
 	]
 ];
+print_r($menus);die;
 foreach($menus as $menu) {
-	echo $menu['name'] . " = " . $menu['link'] . "<br>";
+	if(is_array($menu)) {
+		foreach($menu as $submenu) {
+			echo $submenu['name'];
+		}
+		echo "<br>";
+	}
+	else {
+		echo "$menu<br>";
+	}
+	
 }
 // print_r($menus);
 die;
@@ -30,7 +69,7 @@ $student = [
 	'college' 	=> 'Swastik',
 	'fatherName' => 'Hari Sharma',
 ];
-
+echo $student['name'];
 // replacing/modifying array element values
 var_dump($student);
 $student['college'] = "Ascol"; // if "college" key index found, it modifies the value, adds new element otherwise

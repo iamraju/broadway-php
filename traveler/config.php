@@ -1,26 +1,13 @@
 <?php
-
-$siteTitle = "Nepal Tours & Travels";
-
-$menus = [
-	[
-		'name' => 'Home',
-		'link' => './'
-	],
-	[
-		'name' => 'Destination',
-		'link' => './destination.php'
-	],
-	[
-		'name' => 'Pricing',
-		'link' => './pricing.php'
-	],
-	[
-		'name' => 'Contact',
-		'link' => './contact.php'
-	],
-	[
-		'name' => 'About Us',
-		'link' => './about.php'
-	]
+$destinations = [
+	'Philipines',
+	'India',
+	'Indonesia',
+	'Malaysia',
+	'Nepal',
+	'Bhutan',
+	'Maldivs',
+	'Pakistan',
+	'USA'
 ];
+$defaultDestination = 'USA';

@@ -1,19 +1,18 @@
 <?php
 echo "<pre>";
-$array = [
+/*$array = [
 	['11', '12', '13'],
 	['21', '22', '23'],
 	['31', '32', '33']
 ];
 
-/*print_r($array);
+print_r($array);die;
 foreach($array as $key => $arr) {
 	echo "<strong>$key</strong><br>";
 	foreach($arr as $index => $value) {
 		echo "$index=>$value<br>";
 	}
 }
-
 die;*/
 
 $students = [
@@ -55,8 +54,15 @@ foreach($students as $student) {
 		echo '</tr>';
 	}
 
+	echo '<tr>
+		<td>' . $student['name'] . '</td>
+		<td>' . $student['age'] . '</td>
+		<td>' . $student['email'] . '</td>
+		<td>' . $student['college'] . '</td>
+	</tr>';
+
 	echo '<tr>';
-	foreach($student as $key => $value) {
+	foreach($student as $value) {
 		echo '<td>' . $value . '</td>';
 	}
 	echo '</tr>';
