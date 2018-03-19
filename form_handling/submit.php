@@ -1,16 +1,66 @@
 <?php
-$country = $_POST['country'];
-var_dump($country);
-die;
+// File upload
+// is_uploaded_file
+// move_uploaded_file
+echo "<pre>";
+print_r($_FILES);
 
-$name = 'asf';
+$isUploaded = is_uploaded_file($_FILES['photo']['tmp_name']);
+
+$photoAllowedTypes = ['image/jpeg', 'image/jpg', 'image/png', 'image/gif'];
+if($isUploaded === true) {
+	$filename = $_FILES['photo']['name'];
+	$type = $_FILES['photo']['type'];
+	if(in_array($type, $photoAllowedTypes)){
+		move_uploaded_file($_FILES['photo']['tmp_name'], 'photos/' . $filename);
+
+		echo "File was uploaded";
+	}
+	else {
+		echo "Invalid photo type";
+	}
+}
+else {
+	echo "No photo was uploaded!";
+}
+die;
+$isUploaded = is_uploaded_file($_FILES['resume']['tmp_name']);
+
+if($isUploaded === true) {
+	$filename = $_FILES['resume']['name'];
+
+	move_uploaded_file($_FILES['resume']['tmp_name'], 'photos/' . $filename);
+	
+	echo "Resume File was uploaded";
+}
+else {
+	echo "Please upload a file for resume!";
+}
+
+die;
+echo "<pre>";
+print_r($_FILES);
+print_r($_POST);
+
+/*echo "GET<br>";
+print_r($_GET);
+echo "POST<br>";*/
+// print_r($_POST);
+/*echo "REQUEST<br>";
+print_r($_REQUEST);*/
+die;
+/*$country = $_POST['country'];
+var_dump($country);
+die;*/
+
+/*$name = 'asf';
 if(empty($name)) {
 	echo "Variable is empty.";
 }
 else {
 	echo "Not empty";
 }
-die;
+die;*/
 
 foreach($_POST as $key => $value) {
 	if(is_array($value)) {

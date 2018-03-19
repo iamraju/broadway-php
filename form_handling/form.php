@@ -8,8 +8,8 @@
 <body>
 	<div class="container">
 		<h1>Student Registration</h1>
-		<form action="submit.php" method="post">
-			
+		<form enctype="multipart/form-data" action="submit.php?id=1001" method="post">
+			<input type="hidden" name="id" value="2002">
 			<div class="row">
 				<div class="col-md-4">
 					<label>First Name:</label>
@@ -62,6 +62,24 @@
 						<option value="3">Bhutan</option>
 						<option value="4">Pakistan</option>
 					</select>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-4">
+					<label>Photo:</label>
+				</div>
+				<div class="col-md-8">
+					<input type="file" class="form-control" name="photo">
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-4">
+					<label>Resume:</label>
+				</div>
+				<div class="col-md-8">
+					<input type="file" class="form-control" name="resume">
 				</div>
 			</div>
 
