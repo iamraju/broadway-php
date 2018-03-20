@@ -3,8 +3,10 @@ $username = $_POST['username'];
 $password = $_POST['password'];
 
 if($username === 'ram' && $password === 'sharma') {
-	echo 'Login success';
+	header("Location: success.php");
+	die;
 }
 else {
-	echo 'Invalid login credentials!';
+	header("Location: login.php?error=Login failed, please enter correct credentials!");
+	die;
 }

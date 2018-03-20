@@ -8,6 +8,13 @@
 <body>
 	<div class="container">
 		<h1>Student Login</h1>
+		<div style="color: red;">
+			<?php 
+			if(isset($_GET['error'])) {
+				echo $_GET['error'];
+			}
+			?>
+		</div>
 		<form action="checklogin.php" method="post">
 			
 			<div class="row">
