@@ -8,7 +8,8 @@ $password = $_POST['password'];
 
 if($username === 'ram' && $password === 'sharma') {
 	$_SESSION['username'] = $username;
-	
+	$_SESSION['password'] = $password;
+
 	header("Location: myaccount.php");
 	die;
 }

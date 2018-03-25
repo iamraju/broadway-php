@@ -1,6 +1,6 @@
 <?php
 session_start();
-echo session_id();
+
 if(!isset($_SESSION['username'])) {
 	$_SESSION['error'] = "Please login first.";
 	header("Location: login.php");
