@@ -7,8 +7,13 @@ $username = $_POST['username'];
 $password = $_POST['password'];
 
 if($username === 'ram' && $password === 'sharma') {
+
 	$_SESSION['username'] = $username;
 	$_SESSION['password'] = $password;
+
+	if(isset($_POST['remember_me'])) {
+		setcookie("remember_me", $username, time() + 3600);
+	}
 
 	header("Location: myaccount.php");
 	die;
