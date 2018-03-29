@@ -3,16 +3,41 @@
 // file_exists, fopen, fwrite, fclose, copy, file_get_contents, file_put_contents
 // unlink/delete, basename, file
 
+if($_GET['action'] == "login") {
+	writeLog("User has just logged in!");	
+}
+
+if($_GET['action'] == "view-profile") {
+	writeLog("User has viewed profile!");	
+}
+
+if($_GET['action'] == "product_create") {
+	$productname = "Mobile";
+	writeLog("User has created a product named $productname!");	
+}
+
+function writeLog($content) {
+	$filename = date('Ymd') . ".log";
+	$target = "logs";
+
+	if(!file_exists($target)){
+		mkdir($target);
+	}
+
+	$content = date('Y-m-d H:i:s') . " $content";
+
+	$fileHandle = fopen("$target/$filename", 'a+');
+	fwrite($fileHandle, "$content\n\n");
+	fclose($fileHandle);
+}
+die;
+
 $filename = "test.txt";
 $target = "logs";
 $logName = 'php.log';
 
 $dateFilename = date('Ymd') . ".log";
 echo $dateFilename;
-
-function writeLog($content) {
-
-}
 
 die;
 // copying
