@@ -88,3 +88,24 @@ delete from students where status=0;
 
 -- WHERE clause
 -- AND, OR, IN, BETWEEN
+
+-- Dropping (remote) database and tables;
+-- Drop database
+drop database brdway;
+
+-- Dropping a table
+-- select/use database
+use broadway_php;
+-- drop a table from broadway_php database
+drop table students;
+
+-- Primary key and foreigy key
+ALTER TABLE `departments` 
+	ADD CONSTRAINT `fk_college_id` FOREIGN KEY (`college_id`) 
+		REFERENCES `colleges`(`id`) 
+		ON DELETE RESTRICT 
+		ON UPDATE RESTRICT;
+
+
+
+
