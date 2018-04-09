@@ -106,6 +106,10 @@ ALTER TABLE `departments`
 		ON DELETE RESTRICT 
 		ON UPDATE RESTRICT;
 
-
+-- Create new user to specific user
+GRANT ALL PRIVILEGES 
+	ON broadway_php.* 
+	TO 'broadway'@'localhost' 
+	identified by 'broadway';
 
 
