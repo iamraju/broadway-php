@@ -9,7 +9,7 @@ include "database.php";
 	status smallint(4) not null default '1'
 )";*/
 
-$sql = "SELECT * FROM students";
+$sql = "SELECT * FROM students ORDER BY id DESC";
 
 $result = $mysqli->query($sql);
 ?>
@@ -77,7 +77,8 @@ $result = $mysqli->query($sql);
 						<td><?php echo $row['gender']; ?></td>
 						<td>
 							<a href="edit_student.php?student_id=<?php echo $row['id']; ?>">Edit</a> | 
-							Delete
+							
+							<a onclick="return confirmStudentDelete();" href="delete.php?student_id=<?php echo $row['id']; ?>">Delete</a>
 						</td>
 					</tr>
 
@@ -101,5 +102,15 @@ $result = $mysqli->query($sql);
 			</div>
 		</div>
 	</div>
+<script>
+function confirmStudentDelete(){
+	if(confirm('This will delete record permanently, are you sure to delete it?')){ 
+		return true; 
+	}
+	else{
+		return false;
+	}
+}
+</script>
 </body>
 </html>
