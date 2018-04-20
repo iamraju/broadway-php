@@ -1,21 +1,37 @@
 <?php
-// start the session
-session_start();
+include "database.php";
 
 // Using $_SESSION superglobal, we can set the variables
 $username = $_POST['username'];
-$password = $_POST['password'];
+$password = md5($_POST['password']);
 
-if($username === 'ram' && $password === 'sharma') {
+// query the database with the given username and password
+$sql = "SELECT * FROM users WHERE username='$username' AND password='$password'";
+$result = $mysqli->query($sql);
 
-	$_SESSION['username'] = $username;
-	$_SESSION['password'] = $password;
+// check if the user exists and a row is returned from the database
+if($result->num_rows > 0) {
+	// fetch the user's information from the table
+	// an associative array is returned
+	$row = $result->fetch_assoc();
+
+	if($row['status'] != 1) {
+		$_SESSION['error'] = "Sorry your login has been suspended, please contact administrator!";
+
+		header("Location: login.php");
+		die;
+	}
+	
+	// store the user's information in session (variable)
+	$_SESSION['user'] = $row;
+
+	$_SESSION['is_logged_in'] = true;
 
 	if(isset($_POST['remember_me'])) {
 		setcookie("remember_me", $username, time() + 3600);
 	}
 
-	header("Location: myaccount.php");
+	header("Location: index.php");
 	die;
 }
 else {

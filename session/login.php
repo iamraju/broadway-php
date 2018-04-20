@@ -1,16 +1,9 @@
 <?php
-session_start();
+include "database.php";
+include "library.php";
 
-if(isset($_COOKIE['remember_me'])) {
-	header("Location: myaccount.php");
-	die;
-}
-echo session_id();
-$lastVisitTime = null;
-if(isset($_COOKIE['last_visit'])) {
-	$lastVisitTime = $_COOKIE['last_visit'];
-}
-setcookie("last_visit", time());
+redirectLoggedInUser();
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -24,9 +17,9 @@ setcookie("last_visit", time());
 		<h1>Student Login</h1>
 		<div>
 			<?php
-			if(!empty($lastVisitTime)) {
+			/*if(!empty($lastVisitTime)) {
 				echo "You last visited this page at " . date('Y-m-d H:i:s', $lastVisitTime);
-			}
+			}*/
 			?>
 		</div>
 		<div style="color: red;">

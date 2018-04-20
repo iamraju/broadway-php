@@ -1,7 +1,5 @@
 <?php
-setcookie('PHPSESSID', '', time() - 100); // expiring cookie
-
-session_start();
+include "database.php";
 
 session_destroy();
 
