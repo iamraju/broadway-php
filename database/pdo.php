@@ -3,21 +3,42 @@
 
 $pdo = new \PDO('mysql:host=localhost;dbname=broadway_php', 'broadway', 'broadway');
 
-echo "Connected to the database.";
+// echo "Connected to the database.";
 
-echo '<hr>';
+// echo '<hr>';
 
 // SELECT * FROM students;
 // showing the tables in the database
-$email = $_GET['email'];
 
-// $email = 'hari@gmail.com' OR 1 OR '';
-$sql = "SELECT * FROM students WHERE email='$email'";
-echo $sql;
-$result = $pdo->query($sql);
+$status = isset($_GET['status']) ? (int) $_GET['status'] : 0;
 
-foreach($result as $student) {
-	print_r($student);
-	echo '<hr>';
+$name = isset($_GET['name']) ? $_GET['name'] : null;
+
+$sql = "SELECT * FROM students WHERE status=?";
+
+$statement = $pdo->prepare($sql);
+
+// $statement->bindParam(":nameValue", $name);
+$statement->bindParam(":statusValue", $status);
+
+$statement->execute();
+
+echo "Total Found " . $statement->rowCount();
+echo '<hr>';
+$rows = $statement->fetchAll();
+/*echo "Name:" . $row['name'];
+echo "Name:" . $row->name;
+// print_r($row);
+die;
+$result = $pdo->query($sql);*/
+if($statement->rowCount() > 0) {
+	// echo "Total Count : " . $result->rowCount();
+	foreach($rows as $student) {
+		print_r($student);
+		echo '<hr>';
+	}
+}
+else {
+	echo "NO records found";
 }
 // Perform database operations.
